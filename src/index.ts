@@ -1,15 +1,16 @@
-import express, {Express, Request, Response} from "express";
+// import express, {Express, Request, Response} from "express";
+import app from "./app";
 
-// 01. Initialize the express app
-const app : Express = express();
+/*// 01. Initialize the express app
+const app : Express = express();*/
 
 // 02. Define the application port
 const port = 3000
 
-// 03. Define simple http request
+/*// 03. Define simple http request
 app.get("/", (req : Request, res : Response) => {
     res.send("Request received...");
-});
+});*/
 
 //. 04. Instructs the express app to listen on port 3000
 app.listen(port, () => {

@@ -1,16 +1,63 @@
 1.Create empty Project
+
 2.Create the src directory
+
 3.run 'npm init -y' in terminal (Build the package.json file)
+
 4.Install the dependencies{
     "npm install express" (Build the package-lock.json file)
     "npm install -D typescript ts-node @types/node @types/express" (-D means Dev Dependencies. This dependency is only required for development)
 }
+
 5.run "npx tsc --init" to create the tsconfig.json file. It has typescript configuration
+
 6. Change "target": "es2016", to "target": "es6" in tsconfig.json file
+
 7. Uncomment the "outDir": "./dist" in tsconfig.json file (
     outDir means output directory. This is the directory where the compiled code will be stored. dist means distribution
     )
+
 8. Uncomment the "rootDir": "./src" in tsconfig.json file (
     rootDir means root directory. This is the directory where the source code is stored. src means source
     )
+
 9. Create the index.ts file in src directory
+
+10. Change the package.json file script
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      }, to
+      "scripts": {
+        "dev": "ts-node src/index.ts"
+      }
+
+11. run "npm run dev" in terminal
+
+12.Add "build": "tsc" in package.json script file
+    (This is creation of build script)
+
+13.run "npm run build" in terminal
+
+14. Add "serve": "node dist/index.js" in package.json script file
+    (This is creation of serve script)
+
+15.run "npm run serve" in terminal
+
+16. Install nodemon using "npm install -D nodemon"
+
+17. Add "dev": "nodemon src/index.ts" in package.json script file
+    (nodemon is used to restart the server when the code is changed)
+
+18.run "npm run dev" in terminal
+
+19.Create file nodemon.json in root directory (Define the nodemon configuration)
+    {
+        "watch": ["src"] // This is the directory where the source code is stored
+        "ext": "ts" // This is the extension of the source code
+        "ignore": ["src/**/*.spec.ts"] // Ignore the test files
+        "exec": "ts-node src/index.ts" // This is the command to run the source code
+    }
+
+20. Change "dev": "nodemon src/index.ts" in package.json script file to "dev": "nodemon"
+
+21. run "npm run dev" in terminal

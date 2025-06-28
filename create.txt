@@ -1,0 +1,16 @@
+1.Create empty Project
+2.Create the src directory
+3.run 'npm init -y' in terminal (Build the package.json file)
+4.Install the dependencies{
+    "npm install express" (Build the package-lock.json file)
+    "npm install -D typescript ts-node @types/node @types/express" (-D means Dev Dependencies. This dependency is only required for development)
+}
+5.run "npx tsc --init" to create the tsconfig.json file. It has typescript configuration
+6. Change "target": "es2016", to "target": "es6" in tsconfig.json file
+7. Uncomment the "outDir": "./dist" in tsconfig.json file (
+    outDir means output directory. This is the directory where the compiled code will be stored. dist means distribution
+    )
+8. Uncomment the "rootDir": "./src" in tsconfig.json file (
+    rootDir means root directory. This is the directory where the source code is stored. src means source
+    )
+9. Create the index.ts file in src directory

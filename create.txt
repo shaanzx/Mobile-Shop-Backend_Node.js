@@ -61,3 +61,22 @@
 20. Change "dev": "nodemon src/index.ts" in package.json script file to "dev": "nodemon"
 
 21. run "npm run dev" in terminal
+
+2025.07.05
+
+01. Create .env file for use of environment variables.Like port number
+
+02. Install dotenv using "npm install dotenv"
+
+03.Define folder structure
+        project/
+        |---- app.ts (The main entry point of the application. This file creates a server and sets up the application to listen on a specific port.)
+        |---- index.ts(The main logic of the application. This file defines the application's routes, middleware, and other core functionality.)
+        |---- .env(A file that stores environment variables for the application. This file is used to store sensitive information such as database credentials and API keys.)
+        |---- src/
+        |       |---- controllers/ (A folder that contains the application's controllers. Controllers handle incoming requests and send responses to the client.)
+        |       |---- models/ (A folder that contains the application's data models. Data models define the structure of the application's data.)
+        |       |---- routes/( A folder that contains the application's routes. Routes define the URLs that the application responds to.)
+        |       |---- services/(A folder that contains the application's services. Services are reusable functions that perform specific tasks.)
+        |---- package.json(A file that contains metadata for the application, including dependencies and scripts.)
+        |---- tsconfig.json(A file that contains configuration settings for the TypeScript compiler.)

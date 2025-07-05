@@ -8,6 +8,7 @@ app.use(express.json());  /*Instruct to parse the request payload data to be con
 
 // 03. Define simple http request
 app.get("/", (req : Request, res : Response) => {
+    console.log(req.body)
     res.send("Request received...");
 });
 

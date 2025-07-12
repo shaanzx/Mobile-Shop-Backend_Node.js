@@ -2,6 +2,7 @@ import express, {Express,Request,Response} from "express";
 import productRoutes from "./routes/product.routes"
 import contactRouter from "./routes/contact.routes";
 import cors from "cors"
+import authRoutes from "./routes/auth.routes";
 
 // 01. Initialize the express app
 const app : Express = express();
@@ -25,9 +26,9 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+app.use("/api/auth" , authRoutes)
 app.use("/api/products" , productRoutes);
 app.use("/api/contact" , contactRouter);
-
 
 // 03. Define simple http request
 app.get("/", (req : Request, res : Response) => {

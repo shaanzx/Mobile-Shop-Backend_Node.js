@@ -1,6 +1,7 @@
 // import express, {Express, Request, Response} from "express";
 import app from "./app";
 import dotenv from "dotenv";
+import DBConnection from "./db/DBConnection";
 
 dotenv.config(); //Loading all Environment Variables from .env
 
@@ -14,6 +15,8 @@ const port  = process.env.PORT;
 app.get("/", (req : Request, res : Response) => {
     res.send("Request received...");
 });*/
+
+DBConnection().then(result => console.log(result))
 
 //. 04. Instructs the express app to listen on port 3000
 app.listen(port, () => {

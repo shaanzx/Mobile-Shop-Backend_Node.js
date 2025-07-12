@@ -8,9 +8,9 @@ import {
     validateProduct
 }  from "../services/product.service";
 
-export const getAllProducts = (req : Request , res : Response) => {
+export const getAllProducts = async (req : Request , res : Response) => {
     try{
-        const products = getAllProductsService();
+        const products =await getAllProductsService();
         res.status(200).json({
             message: "Products fetched successfully",
             products: products
@@ -24,10 +24,10 @@ export const getAllProducts = (req : Request , res : Response) => {
 }
 
 
-export  const saveProduct = (req : Request, res: Response) =>{
+export  const saveProduct = async (req : Request, res: Response) =>{
     try{
-        const newProduct = saveProductService(req.body);
-        const validationError = validateProduct(newProduct);
+        const newProduct = await saveProductService(req.body);
+        const validationError =  validateProduct(newProduct);
         if (validationError) {
             res.status(400).json({
                 error: validationError
@@ -46,11 +46,11 @@ export  const saveProduct = (req : Request, res: Response) =>{
     }
 }
 
-export  const getProductById =  (req : Request , res: Response) => {
+export  const getProductById = async (req : Request , res: Response) => {
     try{
         const id = parseInt(req.params.id)
 
-        const product = getProductByIdService(id);
+        const product = await getProductByIdService(id);
         if(!product){
             res.status(404).json({
                 error: "Product not found"
@@ -70,9 +70,9 @@ export  const getProductById =  (req : Request , res: Response) => {
 
 }
 
-export  const updateProduct =  (req : Request , res: Response) => {
+export  const updateProduct = async (req : Request , res: Response) => {
     const existingId = parseInt(req.params.id);
-    const updateProduct = updateProductService(existingId,req.body);
+    const updateProduct = await updateProductService(existingId,req.body);
     if(!updateProduct){
         res.status(404).json({
             error: "Product not found"
@@ -92,9 +92,9 @@ export  const updateProduct =  (req : Request , res: Response) => {
     });
 }
 
-export  const deleteProduct =  (req : Request , res: Response) => {
+export  const deleteProduct = async (req : Request , res: Response) => {
     const id = parseInt(req.params.id);
-    const isDeleted = deleteProductService(id);
+    const isDeleted = await deleteProductService(id);
     if(!isDeleted){
         res.status(404).json({
             error: "Product not found"

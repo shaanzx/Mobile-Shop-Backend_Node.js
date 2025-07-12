@@ -14,15 +14,17 @@ app.use(cors()); /*Enable or Allow CORS Requests*/
 const allowedOrigins = [
     "http://localhost:5173",
 ]
-const corsOptions = (origin: string | undefined,
-                     callback : (err : Error | null, allow? : boolean) => void) => {
-    if (!origin ||allowedOrigins.includes(origin)){
-        callback(null ,true);
-    }else{
-        callback(new Error("Not allowed by CORS"))
+const corsOptions = {
+    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"))
+        }
     }
 }
 
+app.use(cors(corsOptions));
 app.use("/api/products" , productRoutes);
 app.use("/api/contact" , contactRouter);
 

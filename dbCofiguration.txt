@@ -1,0 +1,5 @@
+anuhaslakshan07
+cbMAThGUCWn7mrqE
+
+npm install mongodb
+mongodb+srv://<db_username>:<db_password>@mobileshopcluster.qzj6zc6.mongodb.net/?retryWrites=true&w=majority&appName=MobileShopCluster

@@ -26,8 +26,11 @@ const userList : User[] = [];
 userList.push(adminUser , customerUser);
 
 export const authenticateUserService = (username : string, password : string) => {
+
     const existingUser= userList.find(user => user.username === username);
+    console.log(existingUser);
     const isValidPassword = undefined != existingUser && bcrypt.compareSync(password , existingUser.password);
+    console.log(isValidPassword)
     if (!existingUser || !isValidPassword) {
         return null;
     }

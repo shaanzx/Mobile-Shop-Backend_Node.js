@@ -6,15 +6,16 @@ import {
     saveProduct,
     updateProduct
 } from "../controllers/product.controller";
+import {authorizeRoles} from "../middleware/auth.middleware";
 
-const productRouter :Router = Router();
+const productRouter: Router = Router();
 
 
 // Handle Requests
-productRouter.get("/all" , getAllProducts);
-productRouter.post("/add" , saveProduct)
-productRouter.get("/:id" , getProductById)
-productRouter.put("/update/:id", updateProduct)
-productRouter.delete("/delete/:id" , deleteProduct)
+productRouter.get("/all", authorizeRoles('admin' , 'customer'), getAllProducts);
+productRouter.post("/add", authorizeRoles('admin'), saveProduct)
+productRouter.get("/:id", authorizeRoles('admin' , 'customer'), getProductById)
+productRouter.put("/update/:id", authorizeRoles('admin'), updateProduct)
+productRouter.delete("/delete/:id", authorizeRoles('admin'), deleteProduct)
 
 export default productRouter;
